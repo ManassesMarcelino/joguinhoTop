@@ -1,0 +1,21 @@
+.container-imgs {
+ 
+    width: 100%;
+    margin-top: 10%;
+}
+
+.container-imgs img {
+    
+    width: 30%;
+    height: 30%;
+    padding: 5%;
+}
+
+.container-imgs button{
+    background-color: rgb(59, 55, 55);
+    width: 20%;
+    height: 50px;
+   border-radius: 50PX;
+   outline: none;
+
+}
