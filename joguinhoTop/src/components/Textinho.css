@@ -1,4 +1,4 @@
-.container-textinho{
+.container-textinho {
     display: flex;
     justify-content:center ;
     align-items: center ;
@@ -6,8 +6,11 @@
     position: absolute;
     top: 15%;
     left: 29%;
+    color: rgba(255, 255, 255, 0.705);
 }
 
+h2 {
 
-
-
+    font-family: "Roboto", sans-serif;
+    color: rgba(255, 255, 255, 0.705);
+}

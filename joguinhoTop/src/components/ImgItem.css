@@ -1,7 +1,19 @@
 .container-imgs {
  
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-container {
+
+    width: 30%;
+    background-color: #5883d3;
+    opacity: 60%;
+    border-radius: 30px;
 }
 
 .container-imgs img {
@@ -9,13 +21,23 @@
     width: 30%;
     height: 30%;
     padding: 5%;
+    opacity: 40%;
 }
 
 .container-imgs button{
-    background-color: rgb(59, 55, 55);
+
     width: 20%;
     height: 50px;
-   border-radius: 50PX;
-   outline: none;
+    border: 1px solid #5883d3;
+    border-radius: 15px;
+    outline: none;
+    background-color: #5884d3;
+    color: white;
+    font-size: 15px;
 
+    &:hover {
+
+        background-color: white;
+        color: #5883d3;
+    }
 }

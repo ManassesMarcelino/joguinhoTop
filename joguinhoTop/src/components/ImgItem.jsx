@@ -1,62 +1,63 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react";
+import "./ImgItem.css";
 
+import img1 from "../assets/img1.svg";
+import img2 from "../assets/Img2.svg";
+import img3 from "../assets/Img3.svg";
+import img4 from "../assets/Img4.svg";
+import img5 from "../assets/Img5.svg";
+import img6 from "../assets/Img6.svg";
+import img7 from "../assets/Img7.svg";
+import img8 from "../assets/Img8.svg";
 
-import img1 from "../assets/img1.png";
-import img2 from "../assets/img2.png";
-import img3 from "../assets/img3.png";
-import img4 from "../assets/img4.png";
-import img5 from "../assets/img5.png";
-import img6 from "../assets/img6.png";
-import './ImgItem.css';
+const imagens = [img1, img2, img3, img4, img5, img6, img7, img8];
 
-const imagens = [img1, img2, img3, img4, img5, img6]
+const ImgItem = () => {
+  const [imgSrc, setImgSrc] = useState(imagens[0]);
+  const [timer, setTimer] = useState(false);
+  const [text, setText] = useState("");
+  const [timerCount, setTimerCount] = useState(5);
 
-function ImgItem() {
-  const [imgSrc, setImgSrc] = useState(imagens[0])
-  const [timer, setTimer  ] = useState (false)
-  const [text, setText] = useState('')
+  useEffect(() => {
+    if (timer && timerCount > 0) {
+      const countdown = setInterval(() => {
+        setTimerCount((prev) => prev - 1);
+      }, 1000);
+      return () => clearInterval(countdown);
+    } else if (timerCount === 0) {
+      resetTimer();
+    }
+  }, [timer, timerCount]);
 
   const girarImagem = () => {
-    const novaImagem = imagens[Math.floor(Math.random() * imagens.length)]
-    setImgSrc(novaImagem)
-
+    setImgSrc(imagens[Math.floor(Math.random() * imagens.length)]);
     setTimer(true);
-    setText('Crie sua sua história!');
+    setText("Crie sua história!");
+    setTimerCount(5);
+  };
 
-    setTimeout(() => {
-
-      setTimer(false);
-      setText('');
-    }, 15000);
-  } 
+  const resetTimer = () => {
+    setTimer(false);
+    setText("");
+    setTimerCount(5);
+  };
 
   return (
     <div className="container-imgs" style={{ textAlign: "center" }}>
-      <img
-        src={imgSrc}
-        alt="Imagem"
-      />
+      <div className="imagem-container">
+        <img src={imgSrc} alt="Imagem" />
+      </div>
       <br />
-       
-       {
-        timer
-        ?
+      {timer ? (
         <div className="timer">
           <h2>{text}</h2>
-       </div>
-       :
-      <button
-        onClick={girarImagem}
-       
-      >
-        Girar
-      </button>
-      }
-
+          <h2>{timerCount}</h2>
+        </div>
+      ) : (
+        <button onClick={girarImagem}>Girar</button>
+      )}
     </div>
-
-
   );
-}
+};
 
-export default ImgItem
+export default ImgItem;
